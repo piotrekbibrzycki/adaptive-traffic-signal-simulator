@@ -1,0 +1,1 @@
+rootProject.name = "adaptive-traffic-signal-simulator"
