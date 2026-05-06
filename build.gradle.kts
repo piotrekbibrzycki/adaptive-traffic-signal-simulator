@@ -1,19 +1,29 @@
 plugins {
-    id("java")
+    java
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = "com.example.traffic"
+version = "1.0.0"
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-}
+subprojects {
+    apply(plugin = "java")
 
-tasks.test {
-    useJUnitPlatform()
+    group = rootProject.group
+    version = rootProject.version
+
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(21))
+        }
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
