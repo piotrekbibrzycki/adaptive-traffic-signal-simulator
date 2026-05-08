@@ -174,18 +174,6 @@ This makes the controller responsive to traffic volume while still preventing st
 
 ![adaptive-scheduler](docs/adaptive-scheduler.svg)
 
-## deterministic behavior
-
-The simulator is deterministic.
-
-The same input file always produces the same output file. The simulation does not use wall-clock time. Waiting time is measured in simulation steps:
-
-```text
-waitingTime = currentStep - vehicle.createdAtStep
-```
-
-This makes the algorithm predictable, testable, and suitable for recruitment review.
-
 ## run locally
 
 Run all tests:
