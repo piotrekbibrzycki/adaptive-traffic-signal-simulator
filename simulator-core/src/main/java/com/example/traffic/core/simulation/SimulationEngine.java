@@ -9,6 +9,7 @@ import com.example.traffic.core.model.Movement;
 import com.example.traffic.core.model.Vehicle;
 import com.example.traffic.core.phase.DefaultPhases;
 import com.example.traffic.core.phase.Phase;
+import com.example.traffic.core.safety.PhaseValidator;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -29,8 +30,10 @@ public final class SimulationEngine {
         if (phases == null || phases.isEmpty()) {
             throw new IllegalArgumentException("phases must not be null or empty");
         }
+        List<Phase> phaseCopy = List.copyOf(phases);
+        new PhaseValidator().validateAll(phaseCopy);
 
-        this.phases = List.copyOf(phases);
+        this.phases = phaseCopy;
     }
 
     public SimulationOutput run(List<Command> commands) {

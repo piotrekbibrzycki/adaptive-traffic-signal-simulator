@@ -4,9 +4,12 @@ import com.example.traffic.core.command.AddVehicleCommand;
 import com.example.traffic.core.command.Command;
 import com.example.traffic.core.command.StepCommand;
 import com.example.traffic.core.exception.SimulationException;
+import com.example.traffic.core.model.Movement;
 import com.example.traffic.core.model.Road;
+import com.example.traffic.core.phase.Phase;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -106,5 +109,21 @@ class SimulationEngineTest {
         assertThatThrownBy(() -> engine.run(commands))
                 .isInstanceOf(SimulationException.class)
                 .hasMessageContaining("duplicate vehicle id");
+    }
+
+    @Test
+    void rejectsUnsafePhases() {
+        Phase invalidPhase = new Phase("INVALID_CROSSING", new LinkedHashSet<>(List.of(
+                new Movement(Road.NORTH, Road.SOUTH),
+                new Movement(Road.EAST, Road.WEST)
+        )),
+                1,
+                3,
+                0,
+                0,
+                1);
+
+        assertThatThrownBy(() -> new SimulationEngine(List.of(invalidPhase))).isInstanceOf(SimulationException.class).
+                hasMessageContaining("conflicting movements");
     }
 }
