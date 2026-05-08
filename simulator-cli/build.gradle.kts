@@ -18,3 +18,7 @@ dependencies {
 application {
     mainClass.set("com.example.traffic.cli.CliApplication")
 }
+
+tasks.named<JavaExec>("run") {
+    workingDir = rootProject.projectDir
+}
