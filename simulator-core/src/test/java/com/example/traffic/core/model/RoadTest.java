@@ -43,8 +43,8 @@ class RoadTest {
 
     @Test
     void rejectsUnknownRoadName() {
-        assertThatThrownBy(() -> Road.fromJsonName("diagonal"))
+        assertThatThrownBy(() -> Road.fromJsonName("test"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Unknown road");
+                .hasMessageContaining("unknown road");
     }
 }

@@ -9,7 +9,7 @@ public record Vehicle(
 ) {
     public Vehicle {
         if (id == null || id.isBlank()) {
-            throw new IllegalArgumentException("Vehicle id must not be null or blank");
+            throw new IllegalArgumentException("vehicle id must not be null or blank");
         }
 
         if (startRoad == null) {
@@ -21,7 +21,7 @@ public record Vehicle(
         }
 
         if (startRoad == endRoad) {
-            throw new IllegalArgumentException("Start road and end road must be different");
+            throw new IllegalArgumentException("start road and end road must be different");
         }
 
         priority = priority == null ? VehiclePriority.NORMAL : priority;

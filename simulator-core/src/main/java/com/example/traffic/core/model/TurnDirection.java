@@ -7,7 +7,7 @@ public enum TurnDirection {
 
     public static TurnDirection fromRoads(Road from, Road to) {
         if (from == null) {
-            throw new IllegalArgumentException("From road cannot be null");
+            throw new IllegalArgumentException("from road cannot be null");
         }
 
         if (to == null) {
@@ -15,7 +15,7 @@ public enum TurnDirection {
         }
 
         if (from == to) {
-            throw new IllegalArgumentException("Start road and end road must be different");
+            throw new IllegalArgumentException("start road and end road must be different");
         }
 
         if (to == from.opposite()) {
@@ -30,6 +30,6 @@ public enum TurnDirection {
             return RIGHT;
         }
 
-        throw new IllegalArgumentException("Unsupported movement from " + from + " to " + to);
+        throw new IllegalArgumentException("unsupported movement from " + from + " to " + to);
     }
 }

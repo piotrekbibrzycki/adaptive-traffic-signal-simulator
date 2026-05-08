@@ -11,15 +11,15 @@ public record AddVehicleCommand(
 ) implements Command {
     public AddVehicleCommand {
         if (vehicleId == null || vehicleId.isBlank()) {
-            throw new IllegalArgumentException("vehicle id must not be null or blank");
+            throw new IllegalArgumentException("vehicle id cannot be null or blank");
         }
 
         if (startRoad == null) {
-            throw new IllegalArgumentException("start road must not be null");
+            throw new IllegalArgumentException("start cannot be null");
         }
 
         if (endRoad == null) {
-            throw new IllegalArgumentException("end road must not be null");
+            throw new IllegalArgumentException("end road cannot be null");
         }
 
         if (startRoad == endRoad) {

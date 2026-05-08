@@ -26,7 +26,7 @@ class DefaultPhasesTest {
 
     @Test
     void northSouthPhaseAllowsStraightAndRightMovements() {
-        Phase phase = DefaultPhases.createDefault().get(0);
+        Phase phase = DefaultPhases.createDefault().getFirst();
 
         assertThat(phase.allows(Road.NORTH, Road.SOUTH)).isTrue();
         assertThat(phase.allows(Road.SOUTH, Road.NORTH)).isTrue();

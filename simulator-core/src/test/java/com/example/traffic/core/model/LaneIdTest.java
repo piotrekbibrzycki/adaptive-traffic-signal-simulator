@@ -9,13 +9,13 @@ class LaneIdTest {
     void rejectsNullRoad() {
         assertThatThrownBy(() -> new LaneId(null, LaneType.STRAIGHT))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Road");
+                .hasMessageContaining("road");
     }
 
     @Test
     void rejectsNullLaneType() {
         assertThatThrownBy(() -> new LaneId(Road.NORTH, null))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Lane type");
+                .hasMessageContaining("lane type");
     }
 }

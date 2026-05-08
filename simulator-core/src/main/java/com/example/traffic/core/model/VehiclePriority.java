@@ -14,7 +14,7 @@ public enum VehiclePriority {
         return switch (value.trim().toLowerCase(Locale.ROOT)) {
             case "normal" -> NORMAL;
             case "emergency" -> EMERGENCY;
-            default -> throw new IllegalArgumentException("Unknown vehicle priority: " + value);
+            default -> throw new IllegalArgumentException("unknown vehicle priority: " + value);
         };
     }
 

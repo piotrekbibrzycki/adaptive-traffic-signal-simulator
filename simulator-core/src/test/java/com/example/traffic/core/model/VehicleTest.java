@@ -24,7 +24,7 @@ class VehicleTest {
     void rejectsBlankId() {
         assertThatThrownBy(() -> new Vehicle(" ", Road.SOUTH, Road.NORTH, 0, VehiclePriority.NORMAL))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("Vehicle id");
+                .hasMessageContaining("vehicle id");
     }
 
     @Test

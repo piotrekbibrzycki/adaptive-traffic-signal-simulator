@@ -37,7 +37,7 @@ public enum Road {
 
     public static Road fromJsonName(String value) {
         if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException("Road cannot be null or blank");
+            throw new IllegalArgumentException("road cannot be null or blank");
         }
 
         return switch (value.trim().toLowerCase(Locale.ROOT)) {
@@ -45,7 +45,7 @@ public enum Road {
             case "south" -> SOUTH;
             case "east" -> EAST;
             case "west" -> WEST;
-            default -> throw new IllegalArgumentException("Unknown road: " + value);
+            default -> throw new IllegalArgumentException("unknown road: " + value);
         };
     }
 
