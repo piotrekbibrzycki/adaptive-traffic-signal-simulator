@@ -10,6 +10,8 @@ import com.example.traffic.core.model.Vehicle;
 import com.example.traffic.core.phase.DefaultPhases;
 import com.example.traffic.core.phase.Phase;
 import com.example.traffic.core.safety.PhaseValidator;
+import com.example.traffic.core.scheduler.FirstReadyPhaseScheduler;
+import com.example.traffic.core.scheduler.PhaseScheduler;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,19 +23,29 @@ import java.util.Set;
 
 public final class SimulationEngine {
     private final List<Phase> phases;
+    private final PhaseScheduler scheduler;
 
     public SimulationEngine() {
-        this(DefaultPhases.createDefault());
+        this(DefaultPhases.createDefault(), new FirstReadyPhaseScheduler());
+    }
+    public SimulationEngine(List<Phase> phases) {
+        this(phases, new FirstReadyPhaseScheduler());
     }
 
-    public SimulationEngine(List<Phase> phases) {
+    public SimulationEngine(List<Phase> phases, PhaseScheduler scheduler) {
         if (phases == null || phases.isEmpty()) {
             throw new IllegalArgumentException("phases must not be null or empty");
         }
+
+        if (scheduler == null) {
+            throw new IllegalArgumentException("scheduler must not be null");
+        }
+
         List<Phase> phaseCopy = List.copyOf(phases);
         new PhaseValidator().validateAll(phaseCopy);
 
         this.phases = phaseCopy;
+        this.scheduler = scheduler;
     }
 
     public SimulationOutput run(List<Command> commands) {
@@ -47,6 +59,8 @@ public final class SimulationEngine {
         List<StepStatus> stepStatuses = new ArrayList<>();
 
         int currentStep = 0;
+        Phase currentPhase = phases.getFirst();
+        int currentPhaseElapsed = 0;
 
         for (Command command : commands) {
             if (command instanceof AddVehicleCommand addVehicleCommand) {
@@ -58,8 +72,17 @@ public final class SimulationEngine {
                         currentStep
                 );
             } else if (command instanceof StepCommand) {
-                StepStatus stepStatus = handleStep(intersectionState, vehicleArrivalOrder);
+                Phase selectedPhase = scheduler.selectPhase(phases, intersectionState, currentPhase, currentPhaseElapsed);
+
+                if (!selectedPhase.equals(currentPhase)) {
+                    currentPhase = selectedPhase;
+                    currentPhaseElapsed = 0;
+                }
+
+                StepStatus stepStatus = handleStep(intersectionState, vehicleArrivalOrder, currentPhase);
                 stepStatuses.add(stepStatus);
+
+                currentPhaseElapsed++;
                 currentStep++;
             } else {
                 throw new SimulationException("unsupported command type: " + command.getClass().getName());
@@ -95,9 +118,9 @@ public final class SimulationEngine {
 
     private StepStatus handleStep(
             IntersectionState intersectionState,
-            Map<String, Integer> vehicleArrivalOrder
+            Map<String, Integer> vehicleArrivalOrder,
+            Phase selectedPhase
     ) {
-        Phase selectedPhase = selectPhase(intersectionState);
         List<Vehicle> leftVehicles = new ArrayList<>();
 
         for (Movement movement : selectedPhase.allowedMovements()) {
@@ -115,13 +138,4 @@ public final class SimulationEngine {
         return new StepStatus(leftVehicleIds);
     }
 
-    private Phase selectPhase(IntersectionState intersectionState) {
-        for (Phase phase : phases) {
-            if (intersectionState.hasWaitingVehicleFor(phase)) {
-                return phase;
-            }
-        }
-
-        return phases.getFirst();
-    }
 }
