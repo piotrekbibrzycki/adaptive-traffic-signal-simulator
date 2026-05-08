@@ -19,10 +19,10 @@ public final class DefaultPhases {
     }
 
     public static List<Phase> createDefault() {
-        int minGreenSteps = 2;
+        int minGreenSteps = 0;
         int maxGreenSteps = 8;
-        int yellowSteps = 1;
-        int allRedSteps = 1;
+        int yellowSteps = 0;
+        int allRedSteps = 0;
         int baseWeight = 1;
 
         return List.of(

@@ -25,8 +25,8 @@ public record Phase(
             throw new IllegalArgumentException("allowed movements must not be null or empty");
         }
 
-        if (minGreenSteps < 1) {
-            throw new IllegalArgumentException("min green steps must be at least 1");
+        if (minGreenSteps < 0) {
+            throw new IllegalArgumentException("min green steps must not be negative");
         }
 
         if (maxGreenSteps < minGreenSteps) {

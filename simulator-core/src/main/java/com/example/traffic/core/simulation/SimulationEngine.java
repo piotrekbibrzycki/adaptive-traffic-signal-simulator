@@ -10,7 +10,7 @@ import com.example.traffic.core.model.Vehicle;
 import com.example.traffic.core.phase.DefaultPhases;
 import com.example.traffic.core.phase.Phase;
 import com.example.traffic.core.safety.PhaseValidator;
-import com.example.traffic.core.scheduler.FirstReadyPhaseScheduler;
+import com.example.traffic.core.scheduler.AdaptiveDeficitPhaseScheduler;
 import com.example.traffic.core.scheduler.PhaseScheduler;
 
 import java.util.ArrayList;
@@ -26,10 +26,10 @@ public final class SimulationEngine {
     private final PhaseScheduler scheduler;
 
     public SimulationEngine() {
-        this(DefaultPhases.createDefault(), new FirstReadyPhaseScheduler());
+        this(DefaultPhases.createDefault(), new AdaptiveDeficitPhaseScheduler());
     }
     public SimulationEngine(List<Phase> phases) {
-        this(phases, new FirstReadyPhaseScheduler());
+        this(phases, new AdaptiveDeficitPhaseScheduler());
     }
 
     public SimulationEngine(List<Phase> phases, PhaseScheduler scheduler) {

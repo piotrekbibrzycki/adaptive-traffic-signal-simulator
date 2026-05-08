@@ -48,25 +48,61 @@ public final class IntersectionState {
     }
 
     public boolean hasWaitingVehicle(Movement movement) {
+        return peek(movement) != null;
+    }
+
+    public boolean hasWaitingVehicleFor(Phase phase) {
+        return serviceableVehicles(phase) > 0;
+    }
+
+    public int serviceableVehicles(Phase phase) {
+        if (phase == null) {
+            throw new IllegalArgumentException("phase must not be null");
+        }
+
+        int count = 0;
+
+        for (Movement movement : phase.allowedMovements()) {
+            if (hasWaitingVehicle(movement)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public int maxWaitingTime(Phase phase, int currentStep) {
+        if (phase == null) {
+            throw new IllegalArgumentException("phase must not be null");
+        }
+
+        int maxWaitingTime = 0;
+
+        for (Movement movement : phase.allowedMovements()) {
+            Vehicle vehicle = peek(movement);
+            if (vehicle != null) {
+                int waitingTime = currentStep - vehicle.createdAtStep();
+                maxWaitingTime = Math.max(maxWaitingTime, waitingTime);
+            }
+        }
+
+        return maxWaitingTime;
+    }
+
+    private Vehicle peek(Movement movement) {
         LaneId laneId = new LaneId(movement.from(), movement.requiredLane());
         Queue<Vehicle> queue = queues.get(laneId);
 
         Vehicle first = queue.peek();
         if (first == null) {
-            return false;
+            return null;
         }
 
         Movement firstMovement = new Movement(first.startRoad(), first.endRoad());
-        return firstMovement.equals(movement);
-    }
-
-    public boolean hasWaitingVehicleFor(Phase phase) {
-        for (Movement movement : phase.allowedMovements()) {
-            if (hasWaitingVehicle(movement)) {
-                return true;
-            }
+        if (!firstMovement.equals(movement)) {
+            return null;
         }
 
-        return false;
+        return first;
     }
 }
