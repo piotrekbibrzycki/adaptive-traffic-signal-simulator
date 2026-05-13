@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 350">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --fg2: #6b6b6b;
+    --fg3: #999999;
+    --line: #cccccc;
+    --box-bg: #fafafa;
+    --box-stroke: #d4d4d4;
+  }
+
+  text {
+    font-family: "SF Mono", "Cascadia Code", "Fira Code", Consolas, monospace;
+  }
+</style>
+
+<rect width="680" height="350" fill="var(--bg)"/>
+
+<text x="170" y="34" text-anchor="middle" font-size="11" fill="var(--fg)">straight/right phases</text>
+<text x="510" y="34" text-anchor="middle" font-size="11" fill="var(--fg)">protected left phases</text>
+
+<rect x="52" y="58" width="236" height="122" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="170" y="82" text-anchor="middle" font-size="10.5" fill="var(--fg)">NS_STRAIGHT_RIGHT</text>
+<text x="170" y="110" text-anchor="middle" font-size="9" fill="var(--fg2)">NORTH -> SOUTH</text>
+<text x="170" y="130" text-anchor="middle" font-size="9" fill="var(--fg2)">SOUTH -> NORTH</text>
+<text x="170" y="150" text-anchor="middle" font-size="9" fill="var(--fg2)">NORTH -> WEST</text>
+<text x="170" y="170" text-anchor="middle" font-size="9" fill="var(--fg2)">SOUTH -> EAST</text>
+
+<rect x="52" y="200" width="236" height="122" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="170" y="224" text-anchor="middle" font-size="10.5" fill="var(--fg)">EW_STRAIGHT_RIGHT</text>
+<text x="170" y="252" text-anchor="middle" font-size="9" fill="var(--fg2)">EAST -> WEST</text>
+<text x="170" y="272" text-anchor="middle" font-size="9" fill="var(--fg2)">WEST -> EAST</text>
+<text x="170" y="292" text-anchor="middle" font-size="9" fill="var(--fg2)">EAST -> NORTH</text>
+<text x="170" y="312" text-anchor="middle" font-size="9" fill="var(--fg2)">WEST -> SOUTH</text>
+
+<rect x="392" y="58" width="236" height="54" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="510" y="78" text-anchor="middle" font-size="10.5" fill="var(--fg)">N_LEFT</text>
+<text x="510" y="98" text-anchor="middle" font-size="9" fill="var(--fg2)">NORTH -> EAST</text>
+
+<rect x="392" y="128" width="236" height="54" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="510" y="148" text-anchor="middle" font-size="10.5" fill="var(--fg)">S_LEFT</text>
+<text x="510" y="168" text-anchor="middle" font-size="9" fill="var(--fg2)">SOUTH -> WEST</text>
+
+<rect x="392" y="198" width="236" height="54" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="510" y="218" text-anchor="middle" font-size="10.5" fill="var(--fg)">E_LEFT</text>
+<text x="510" y="238" text-anchor="middle" font-size="9" fill="var(--fg2)">EAST -> SOUTH</text>
+
+<rect x="392" y="268" width="236" height="54" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="510" y="288" text-anchor="middle" font-size="10.5" fill="var(--fg)">W_LEFT</text>
+<text x="510" y="308" text-anchor="middle" font-size="9" fill="var(--fg2)">WEST -> NORTH</text>
+
+<line x1="340" y1="58" x2="340" y2="322" stroke="var(--line)" stroke-width="0.7" stroke-dasharray="4 3"/>
+</svg>

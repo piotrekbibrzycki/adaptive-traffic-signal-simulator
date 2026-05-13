@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 220">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --fg2: #6b6b6b;
+    --fg3: #999999;
+    --line: #cccccc;
+    --box-bg: #fafafa;
+    --box-stroke: #d4d4d4;
+  }
+
+  text {
+    font-family: "SF Mono", "Cascadia Code", "Fira Code", Consolas, monospace;
+  }
+</style>
+
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M2 2L8 5L2 8" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<rect width="680" height="220" fill="var(--bg)"/>
+
+<rect x="40" y="84" width="92" height="52" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="86" y="103" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">push / pr</text>
+<text x="86" y="121" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">github</text>
+
+<rect x="160" y="84" width="92" height="52" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="206" y="103" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">setup java</text>
+<text x="206" y="121" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">temurin 21</text>
+
+<rect x="280" y="84" width="92" height="52" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="326" y="103" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">gradle test</text>
+<text x="326" y="121" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">core + cli</text>
+
+<rect x="400" y="84" width="92" height="52" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="446" y="103" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">sample run</text>
+<text x="446" y="121" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">json smoke</text>
+
+<rect x="520" y="84" width="92" height="52" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="566" y="103" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">docker build</text>
+<text x="566" y="121" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">image check</text>
+
+<line x1="132" y1="110" x2="160" y2="110" stroke="var(--line)" stroke-width="0.8" marker-end="url(#a)"/>
+<line x1="252" y1="110" x2="280" y2="110" stroke="var(--line)" stroke-width="0.8" marker-end="url(#a)"/>
+<line x1="372" y1="110" x2="400" y2="110" stroke="var(--line)" stroke-width="0.8" marker-end="url(#a)"/>
+<line x1="492" y1="110" x2="520" y2="110" stroke="var(--line)" stroke-width="0.8" marker-end="url(#a)"/>
+</svg>
