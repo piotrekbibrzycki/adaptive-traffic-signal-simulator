@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-build-smoke:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: gradle
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x gradlew
+
+      - name: Run tests
+        run: ./gradlew test
+
+      - name: Build CLI distribution
+        run: ./gradlew :simulator-cli:installDist
+
+      - name: Run sample simulation
+        run: ./simulator-cli/build/install/simulator-cli/bin/simulator-cli examples/sample-input.json build/sample-output.json
+
+      - name: Print sample output
+        run: cat build/sample-output.json
+
+      - name: Build Docker image
+        run: docker build -t adaptive-traffic-signal-simulator:ci .
+
+      - name: Run sample simulation in Docker
+        run: |
+          mkdir -p out
+          docker run --rm \
+            -v "$PWD:/workspace" \
+            adaptive-traffic-signal-simulator:ci \
+            /workspace/examples/sample-input.json \
+            /workspace/out/docker-ci-output.json
+
+      - name: Print Docker sample output
+        run: cat out/docker-ci-output.json
