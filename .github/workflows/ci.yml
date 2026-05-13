@@ -29,7 +29,9 @@ jobs:
         run: ./gradlew :simulator-cli:installDist
 
       - name: Run sample simulation
-        run: ./simulator-cli/build/install/simulator-cli/bin/simulator-cli examples/sample-input.json build/sample-output.json
+        run: |
+          mkdir -p build
+          ./simulator-cli/build/install/simulator-cli/bin/simulator-cli examples/sample-input.json build/sample-output.json
 
       - name: Print sample output
         run: cat build/sample-output.json
