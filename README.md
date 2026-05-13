@@ -251,35 +251,18 @@ The pipeline runs:
 
 ## testing
 
-The test suite covers:
+The project includes unit and integration tests for the core simulation model, safety rules, adaptive scheduling and CLI input/output.
 
-* road parsing and road relationships
-* turn direction resolution
-* lane assignment
-* vehicle validation
-* command validation
-* FIFO lane queues
-* simulation engine behavior
-* required output shape
-* CLI input/output integration
-* default phase definitions
-* conflict matrix behavior
-* phase safety validation
-* adaptive scheduler behavior
+The tests verify:
 
-Key tested scenarios include:
+* domain model validation, including roads, turns, lanes, vehicles and commands
+* FIFO queue behavior inside the intersection state
+* simulation engine behavior and the required `stepStatuses` output format
+* traffic phase safety using `ConflictMatrix` and `PhaseValidator`
+* adaptive scheduler decisions, including green constraints, queue pressure and starvation prevention
+* CLI integration by reading an input JSON file and writing the required output JSON
 
-* one `stepStatus` per `step` command
-* vehicles can leave the intersection
-* opposite safe movements can leave in the same step
-* FIFO order is preserved within a lane
-* duplicate vehicle IDs are rejected
-* invalid phases are rejected
-* default phases are safe
-* adaptive scheduler respects green constraints
-* adaptive scheduler prefers phases with higher serviceable traffic
-* skipped phases are eventually served
-
+GitHub Actions runs the full Gradle test suite and a sample simulation smoke test on every push.
 
 ## tech stack
 
