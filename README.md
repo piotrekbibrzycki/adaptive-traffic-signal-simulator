@@ -10,7 +10,7 @@ The project focuses on clean Java design, deterministic simulation, adaptive sch
 
 ## architecture
 
-The project is split into two Gradle modules.
+The project is split into two Gradle modules:
 
 * `simulator-core` contains the framework-independent simulation engine, domain model, queues, phases, safety validation, and schedulers.
 * `simulator-cli` contains the command-line adapter responsible for reading JSON input and writing JSON output.
