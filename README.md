@@ -188,6 +188,21 @@ On Windows:
 .\gradlew.bat test
 ```
 
+Create output directory:
+
+```bash
+mkdir -p out
+```
+On Windows:
+
+```powershell
+New-Item -ItemType Directory -Force out
+```
+
+
+
+
+
 Run the sample simulation:
 
 ```bash
