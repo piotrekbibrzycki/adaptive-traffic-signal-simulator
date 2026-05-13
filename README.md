@@ -4,16 +4,16 @@
 
 Adaptive Traffic Signal Simulator is a Java 21 command-line simulation engine for a four-way road intersection.
 
-The system reads traffic commands from a JSON file, simulates lane-based vehicle queues, selects safe traffic phases, and writes the required output JSON containing vehicles that left the intersection on each simulation step.
+The system reads traffic commands from a JSON file, simulates lane-based vehicle queues, selects safe traffic phases and writes the required output JSON containing vehicles that left the intersection on each simulation step.
 
-The project focuses on clean Java design, deterministic simulation, adaptive scheduling, safety validation, automated tests, Docker-based execution, and GitHub Actions CI.
+The project focuses on clean Java design, deterministic simulation, adaptive scheduling, safety validation, automated tests, Docker-based execution and GitHub Actions CI.
 
 ## architecture
 
 The project is split into two Gradle modules:
 
-* `simulator-core` contains the framework-independent simulation engine, domain model, queues, phases, safety validation, and schedulers.
-* `simulator-cli` contains the command-line adapter responsible for reading JSON input and writing JSON output.
+* `simulator-core` contains the framework-independent simulation engine, domain model, queues, phases, safety validation, and schedulers
+* `simulator-cli` contains the command-line adapter responsible for reading JSON input and writing JSON output
 
 ![architecture](docs/traffic-simulator-architecture.svg)
 
