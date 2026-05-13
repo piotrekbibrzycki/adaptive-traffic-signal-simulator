@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 300">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --fg2: #6b6b6b;
+    --fg3: #999999;
+    --line: #cccccc;
+    --box-bg: #fafafa;
+    --box-stroke: #d4d4d4;
+  }
+
+  text {
+    font-family: "SF Mono", "Cascadia Code", "Fira Code", Consolas, monospace;
+  }
+</style>
+
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M2 2L8 5L2 8" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<rect width="680" height="300" fill="var(--bg)"/>
+
+<rect x="50" y="58" width="580" height="160" rx="4" fill="none" stroke="var(--line)" stroke-width="0.7" stroke-dasharray="4 3"/>
+<text x="66" y="74" font-size="9" fill="var(--fg3)" letter-spacing="0.5">adaptive deficit scheduler</text>
+
+<rect x="86" y="116" width="118" height="44" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="145" y="133" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">lane queues</text>
+<text x="145" y="149" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">waiting cars</text>
+
+<line x1="204" y1="138" x2="238" y2="138" stroke="var(--line)" stroke-width="0.8" marker-end="url(#a)"/>
+
+<rect x="238" y="116" width="118" height="44" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="297" y="133" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">score phases</text>
+<text x="297" y="149" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">demand + wait</text>
+
+<line x1="356" y1="138" x2="390" y2="138" stroke="var(--line)" stroke-width="0.8" marker-end="url(#a)"/>
+
+<rect x="390" y="116" width="118" height="44" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="449" y="133" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">select phase</text>
+<text x="449" y="149" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">green rules</text>
+
+<line x1="508" y1="138" x2="542" y2="138" stroke="var(--line)" stroke-width="0.8" marker-end="url(#a)"/>
+
+<rect x="542" y="116" width="58" height="44" rx="3" fill="var(--box-bg)" stroke="var(--box-stroke)" stroke-width="0.7"/>
+<text x="571" y="133" text-anchor="middle" dominant-baseline="central" font-size="9.5" fill="var(--fg)">pass</text>
+<text x="571" y="149" text-anchor="middle" dominant-baseline="central" font-size="8.3" fill="var(--fg3)">cars</text>
+
+<text x="340" y="196" text-anchor="middle" font-size="8.8" fill="var(--fg2)">deficit grows with queue size, waiting time and skipped rounds</text>
+
+<text x="340" y="244" text-anchor="middle" font-size="8.8" fill="var(--fg3)">minimum green, maximum green and switch threshold prevent chaotic phase changes</text>
+
+</svg>
